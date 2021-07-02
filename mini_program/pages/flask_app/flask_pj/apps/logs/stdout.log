@@ -1,0 +1,46 @@
+[2021-06-30 11:02:59,051] INFO in _internal:  * Restarting with stat
+[2021-06-30 11:02:59,510] WARNING in _internal:  * Debugger is active!
+[2021-06-30 11:02:59,516] INFO in _internal:  * Debugger PIN: 131-639-687
+[2021-06-30 11:02:59,546] INFO in _internal:  * Running on http://0.0.0.0:8000/ (Press CTRL+C to quit)
+[2021-06-30 11:03:09,300] INFO in _internal: 127.0.0.1 - - [30/Jun/2021 11:03:09] "[33mGET /demo_pj/ HTTP/1.1[0m" 404 -
+[2021-06-30 11:03:09,437] INFO in _internal: 127.0.0.1 - - [30/Jun/2021 11:03:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2021-06-30 11:03:53,842] INFO in index: GET for index.home
+[2021-06-30 11:03:53,851] INFO in _internal: 127.0.0.1 - - [30/Jun/2021 11:03:53] "[37mGET /flask_pj/ HTTP/1.1[0m" 200 -
+[2021-06-30 11:55:56,368] INFO in manage: run server at port 8000
+[2021-06-30 11:55:56,425] INFO in manage: run server at port 8000
+[2021-06-30 22:48:17,538] INFO in _internal:  * Restarting with stat
+[2021-06-30 22:48:57,290] INFO in _internal:  * Restarting with stat
+[2021-06-30 22:53:11,045] INFO in _internal:  * Restarting with stat
+[2021-06-30 22:54:48,547] INFO in _internal:  * Restarting with stat
+[2021-06-30 22:54:49,649] WARNING in _internal:  * Debugger is active!
+[2021-06-30 22:54:49,666] INFO in _internal:  * Debugger PIN: 131-639-687
+[2021-06-30 22:54:49,692] INFO in _internal:  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+[2021-06-30 22:55:10,675] INFO in _internal:  * Detected change in 'F:\\ Ó∆⁄ µ—µ\\flask_app\\flask_pj\\manage.py', reloading
+[2021-06-30 22:55:11,114] INFO in _internal:  * Restarting with stat
+[2021-06-30 22:55:12,214] WARNING in _internal:  * Debugger is active!
+[2021-06-30 22:55:12,220] INFO in _internal:  * Debugger PIN: 131-639-687
+[2021-06-30 22:55:12,244] INFO in _internal:  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+[2021-06-30 22:55:16,789] INFO in manage: run server at port 8888
+[2021-06-30 22:55:17,126] INFO in manage: run server at port 8888
+[2021-06-30 23:38:21,377] INFO in _internal:  * Restarting with stat
+[2021-06-30 23:38:22,543] WARNING in _internal:  * Debugger is active!
+[2021-06-30 23:38:22,549] INFO in _internal:  * Debugger PIN: 131-639-687
+[2021-06-30 23:38:22,572] INFO in _internal:  * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+[2021-06-30 23:40:49,362] INFO in manage: run server at port 8080
+[2021-06-30 23:40:49,655] INFO in manage: run server at port 8080
+[2021-06-30 23:41:05,203] INFO in _internal:  * Restarting with stat
+[2021-06-30 23:41:06,290] WARNING in _internal:  * Debugger is active!
+[2021-06-30 23:41:06,297] INFO in _internal:  * Debugger PIN: 131-639-687
+[2021-06-30 23:41:06,322] INFO in _internal:  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+[2021-06-30 23:42:32,176] INFO in _internal: 127.0.0.1 - - [30/Jun/2021 23:42:32] "[33mGET / HTTP/1.1[0m" 404 -
+[2021-06-30 23:42:32,363] INFO in _internal: 127.0.0.1 - - [30/Jun/2021 23:42:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2021-06-30 23:46:02,678] INFO in manage: run server at port 8888
+[2021-06-30 23:46:02,999] INFO in manage: run server at port 8888
+[2021-06-30 23:46:10,387] INFO in _internal:  * Restarting with stat
+[2021-06-30 23:46:11,628] WARNING in _internal:  * Debugger is active!
+[2021-06-30 23:46:11,635] INFO in _internal:  * Debugger PIN: 131-639-687
+[2021-06-30 23:46:11,662] INFO in _internal:  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+[2021-06-30 23:47:19,757] INFO in index: GET for index.home
+[2021-06-30 23:47:19,772] INFO in _internal: 127.0.0.1 - - [30/Jun/2021 23:47:19] "[37mGET /flask_pj/ HTTP/1.1[0m" 200 -
+[2021-06-30 23:49:36,323] INFO in manage: run server at port 8888
+[2021-06-30 23:49:36,580] INFO in manage: run server at port 8888

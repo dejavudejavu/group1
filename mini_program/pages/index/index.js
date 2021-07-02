@@ -3,6 +3,7 @@
 const app = getApp()
 
 Page({
+  
   data: {
     date:null,
     show:true,

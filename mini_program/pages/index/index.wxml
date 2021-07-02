@@ -3,3 +3,4 @@
   <van-cell title="选择单个日期" value="{{ date }}" bind:click="onDisplay" />
   <van-calendar show="{{ show }}" bind:close="onClose" bind:confirm="onConfirm" />
 </view>
+
