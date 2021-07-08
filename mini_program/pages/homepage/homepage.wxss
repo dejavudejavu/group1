@@ -1,0 +1,20 @@
+/* pages/homepage/homepage.wxss */
+.body{
+  position: absolute;
+  top: 10%;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0 4%;
+}
+.van-image image{
+  border-radius: 8pt;
+  border: 1px solid white;
+}
+.smallwrd{
+  color: #c1c1c9;
+  font-size: 22rpx;
+}
+.bigwrd{
+  font-weight: bold;
+}

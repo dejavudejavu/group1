@@ -1,0 +1,76 @@
+<!--pages/personal/personal.wxml-->
+<view class='homeBG' style="display:flex;flex-direction:column;padding: 5% 4%;">
+  <view class='round-angle' style="flex:1;margin-bottom: 4%;padding:4%;position: relative;">
+    <view style="display:flex;position: relative; top: -12%;">
+      <van-image
+        round
+        width="4rem"
+        height="4rem"
+        fit="cover"
+        src="{{avatar}}"
+        style="margin-right:4%"
+      />
+      <view style="align-self: center;">{{user_name}}</view>  
+    </view>
+    <view style="display:flex;flex-direction:column;height:79%">
+      <view style="flex:2;">
+        <view>
+          <view style="text-align:center">
+            <view style="display:inline-block;margin: 40rpx;">
+              <view style="display: inline-block;font-size: 100rpx;">{{clockons.length}}</view>
+              <view style="display: inline-block;">天</view>
+              <view>累计打卡</view>              
+            </view>
+            <view style="display:inline-block;margin: 40rpx">
+              <view style="display: inline-block;font-size: 100rpx;">{{max_length}}</view>
+              <view style="display: inline-block;">天</view>
+              <view>最长连续</view>              
+            </view>            
+          </view>
+        </view>
+      </view>
+        <van-divider />     
+      <view style="flex:1;"> 
+        <view style="position: relative;top: 50%; transform: translate(0, -50%);">每天背单词提醒</view>
+        <van-switch checked="{{ checked }}" bind:change="onChange" style="float:right" />
+      </view>
+    </view>    
+  </view>
+  <view class='round-angle' style="flex:2">
+    <!--日历-->
+    <!--年月切换栏-->
+    <view style="display:flex;justify-content:space-between;margin-top:27rpx">
+      <image src="pic/toL.png" style="width:56rpx;height:68rpx;margin-left:32rpx;" bindtap="toL"></image>
+      <view style="display:flex;flex-direction:column;">
+        <view style="font-size:38rpx;color:rgb(51,51,51);text-align:center;font-weight:700;">{{choosedDay.month}}月</view>
+        <view style="font-size:24rpx;color:rgb(187,187,187);text-align:center">{{choosedDay.year}}</view>
+      </view>
+      <image src="pic/toR.png" style="width:56rpx;height:68rpx;margin-right:32rpx;" bindtap="toR"></image>
+    </view>
+    <!--一周文字--> 
+    <view class="weekW">
+      <view wx:for="{{weekW}}" wx:key="index">{{item}}</view>
+    </view>
+
+    <!--日期部分-->
+
+    <view wx:for="{{days.length/7}}" wx:for-index="i" wx:key="i">
+      <view wx:for="{{days}}" wx:for-index="j" wx:key="j" wx:for-item="item">
+        <view wx:if="{{j/7==i}}" class="rowCal">
+          <view wx:for="{{7}}" wx:for-index="k" wx:key="k"
+            class="{{days[j+k].thisMonth?'choosedCell':'unchoosedCell'}} cellCal">
+            <view wx:if="{{days[j+k].isSign}}" >
+              <image src="pic/already.png" class="picBac"></image>
+              <view style="margin-top:-71rpx">{{days[j+k].date}}</view>
+            </view>
+            <view wx:else>{{days[j+k].date}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view style="text-align: center; margin: 20rpx;font-size: 20rpx;color: rgb(187,187,187);">背单词，贵在坚持记得每日打卡哦！  </view>
+    <view style="text-align: center;">
+      <van-button round type="info">点我打卡</van-button>
+    </view>
+  </view>
+</view>
