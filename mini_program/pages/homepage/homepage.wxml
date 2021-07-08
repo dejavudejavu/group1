@@ -1,0 +1,78 @@
+<!--pages/homepage/homepage.wxml-->
+<view class="homeBG">
+  <view class ="body">
+    <view style="display:flex;color:white;margin-bottom:8%" bindtap="toPersonal">
+      <van-image
+        round
+        width="4rem"
+        height="4rem"
+        fit="cover"
+        src="{{avatar}}"
+      />  
+      <view style="margin-left: 20rpx;display: flex; flex-direction: column; align-self: center;flex: 5;">
+        <view style="font-size: 44rpx;margin-bottom: 10rpx;">Hi~,{{user_name}}</view> 
+        <view style="font-size: 22rpx;">今天是你打卡的第{{days}}天，累计学习了{{words}}个单词</view>     
+      </view>
+      <van-icon name="arrow" style="flex: 1;text-align: right;"/>
+    </view>
+    <view class='round-angle' style="height:55%;margin-bottom:4%;display:flex;flex-direction:column;text-align: center;">  
+      <view style="display:flex;position: relative;top: -5%;">
+        <van-image
+          width="4rem"
+          height="6rem"
+          fit="cover"
+          src="{{book_cover}}"
+          style="margin-left:4%;"
+        />   
+        <view style="margin-left: 20rpx;">
+          <view style="position: relative;top: 25%; font-size: 36rpx; font-weight: bold;">{{book_name}}</view>
+          <view style="position: absolute; bottom: 3%;font-size: 15px;height:40rpx;color:#c1c1c9">
+            <image src="./img/word_logo.png" style="height:40rpx;width:40rpx;display:inline-block"></image>
+            <view style="display:inline-block;transform: translate(0, -6rpx);">单词表</view>                      
+          </view>
+        </view>  
+        <view style="position: absolute; bottom: 0; right: 0;width: 134rpx; height: 64rpx;" bindtap="toChooseBook">
+          <image src="../../assets/logo/change_book.png" style="height:100%;width:100%"/>
+        </view>
+      </view>
+      <view style="flex:0.3;font-size:30rpx">今日待学</view>
+      <view style="flex:4;font-size:180rpx;">{{to_learn}}</view>
+      <view style="flex:0.3;font-size:30rpx;margin-bottom: 20rpx;">恭喜你,完成今日任务!</view>
+      <view style="display:flex;flex:1;padding: 0 4%;">
+        <view style="flex: 1;color:#c1c1c9">已学习 <text style="color:#58a1ff">{{learned}}</text>/{{total}}</view>
+        <view style="flex: 1;color:#c1c1c9">剩余<text style="color:#58a1ff">{{left_days}}</text>天</view>
+        <view style="flex: 1;color:#c1c1c9" bindtap="toSetPlan"> 
+          <image src="./img/plan.png" style="height:40rpx;width:40rpx;vertical-align: middle;"></image>
+          <text>调整计划</text>
+        </view>
+      </view>
+      <view style="padding: 0 4%;flex:1;"> 
+        <van-progress percentage="50"  stroke-width="8" show-pivot="{{false}}" style="width:100%;"/>        
+      </view>
+      <view style="padding: 0 4%;flex:2; display:flex">   
+        <view style="flex:1;padding:1%">
+          <van-button round type="info"  bindtap='toStart' color='rgb(255,211,0)' class='reviewBtn'>开始复习</van-button>  
+        </view>
+        <view style="flex:1;padding:1%">
+          <van-button round type="info"  bindtap='toStart'>开始学习</van-button>        
+        </view>      
+      </view>
+    </view>
+    <view style="height:11%" bindtap="toWrongCollection">
+      <view  class='round-angle' style="height:100%;width:48%;float:left; background-image:url('./img/wrongBook.png') ;background-repeat: no-repeat;  background-size:30%;background-position-x: right; background-position-y: 64rpx; ">
+        <view style="margin: 20rpx;">
+          <view class="bigwrd">错词本</view>
+          <view class="smallwrd">错词巩固，针对提升</view>        
+        </view>
+      </view>
+      <view  class='round-angle' style="height:100%;width:48%;float:right; background-image:url('./img/collection.png') ;background-repeat: no-repeat;  background-size:30%;background-position-x: right; background-position-y: 64rpx;">
+        <view style="margin: 20rpx;">
+          <view class="bigwrd">收藏夹</view>
+          <view class="smallwrd">重点难点，着重强化</view>        
+        </view>
+      </view>
+    </view>
+    <!-- <van-image width="100" height="100" src="../img/bottom_logo.png" />     -->
+    <image src='./img/bottom_logo.png' style="height: 13%;  width: 100%;position: absolute; left: 0;bottom: 0;"></image>
+  </view>
+</view>
