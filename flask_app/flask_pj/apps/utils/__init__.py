@@ -2,7 +2,6 @@ import os
 import argparse
 from logging.config import dictConfig
 
-
 def config_log():
     dictConfig({
         'version': 1,

@@ -4,7 +4,7 @@
     "ignore": []
   },
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -38,11 +38,10 @@
       {
         "packageJsonPath": "./package.json",
         "miniprogramNpmDistDir": "./mini_program/"
-      }      
+      }
     ],
     "minifyWXSS": true,
     "showES6CompileOption": false
-    
   },
   "compileType": "miniprogram",
   "libVersion": "2.17.0",

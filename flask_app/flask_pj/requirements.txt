@@ -1,5 +1,7 @@
-PyMySQL>=0.9.3
-SQLAlchemy>=1.2.15
-Flask-SQLAlchemy>=2.3.2
-gevent>=1.4.0
-gunicorn>=19.9.0
+gevent==21.1.2
+Flask_Cors==3.0.10
+requests==2.25.1
+pymongo==3.11.3
+Flask==2.0.1
+mongoengine==0.23.1
+flask_mongoengine==1.0.0

@@ -8,3 +8,19 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+.homeBG{
+  background: rgb(88,161,255);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.round-angle{
+  background: white;
+  border-radius: 12pt;
+}
+.van-button{
+  width: 100%;
+  font-size: 30rpx !important;
+}
