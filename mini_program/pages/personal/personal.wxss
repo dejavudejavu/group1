@@ -2,17 +2,14 @@
 .weekW{
   display:flex;
   justify-content:space-between;
-  margin-top:42rpx;
-  margin-left:40rpx;
-  margin-right:40rpx;
+  margin: 5%;
+  margin-top: 1%;
   font-size: 34rpx;
   color:rgb(187,187,187);
-  margin-bottom: 41rpx;
-
+  margin-bottom: 3%;
 }
 .rowCal{
-  
-  margin-top:36rpx;
+  margin-top:3%;
   display:flex;
   font-size:34rpx;
   text-align: center;
@@ -44,4 +41,14 @@
 }
 .van-button{
   width: 50%;
+  margin-bottom: 1% !important;
 }
+
+.van-switch{
+  float: right;
+  margin-top: 11rpx;
+  /* height: 60% !important; */
+}
+/* .van-switch__node{
+  height: 100% !important;
+} */

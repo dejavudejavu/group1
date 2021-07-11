@@ -3,10 +3,9 @@ page{
   background: -webkit-linear-gradient(right,#4989ff,rgb(88,161,255));
 }
 .bac{
-  width: 686rpx;
-  height:1075rpx;
-  margin-top: 66rpx;
-  margin-left: 32rpx;
+  width: 100%;
+  height:100%;
+  margin-top: 2%;
   background-color: white;
   border-Radius: 15px;
   box-shadow: 0 2px 1rpx #5882f0;
@@ -43,7 +42,7 @@ page{
   margin-left: 24rpx;
 }
 .pickerSty{
-  height:490rpx;
+  height:100%;
   width:71rpx;
 }
 
@@ -55,4 +54,9 @@ page{
   font-size: 34rpx;
   color:white;
   margin-top: 40rpx;
+  margin-bottom: 40rpx;
 }
+
+/* .van-picker__columns{
+  height: 100% !important;
+} */

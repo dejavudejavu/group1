@@ -46,9 +46,7 @@
 <!--底部按钮-->
 <view style="display:flex;margin-top:34rpx;margin-bottom:30rpx">
   <button class="but1" bindtap="toIndex">返回首页</button>
-  <button class="but2" bindtap="signBtr">
-    <text wx:if="{{today.isSign==false}}">点我打卡</text>
-    <text wx:else>去分享</text>
-  </button>
+  <button class="but2" wx:if="{{!today.isSign}}" bindtap="clockin">点我打卡</button>
+  <button wx:else class="but2" bindtap="share">去分享</button>
 </view>
 

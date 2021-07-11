@@ -37,6 +37,7 @@ Page({
     nextBarChoosed:0,//当前选中的副导航栏
   },
   onLoad: function () {
+    wx.setNavigationBarTitle({ title:'添加词书'})
     var that=this
     console.log("navList",this.data.navList)
     wx.request({

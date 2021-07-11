@@ -1,10 +1,3 @@
-后台打开方式：
-1.安装依赖：终端进入flask_app\flask_pj这个目录下面，输入pip install -r requirements.txt
-2.启动后台：同一个目录下python manage.py 8888
-3.修改前端地址：app.js中的globalData中的baseUrl改成自己的内网地址，一定是内网地址
-4.运行前端项目
-
-
 |   |-- flask_app 	后台工程
 |   |   `-- flask_pj
 |   |       |-- __init__.py

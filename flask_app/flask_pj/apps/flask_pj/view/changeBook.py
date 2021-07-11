@@ -1,12 +1,8 @@
-import math
+from flask import Blueprint, jsonify, request, abort
 
-from flask import Blueprint, jsonify, current_app, request, abort
-from flask_pj.apps.utils.constants import METHODTYPE
-import flask_pj.apps.utils.constants as constant
 from flask_pj.apps.flask_pj.model import *
-from bson import json_util
-import json
 from flask_pj.apps.utils import jsonHelper
+from flask_pj.apps.utils.constants import METHODTYPE
 
 changeBook = Blueprint('changeBook', __name__, url_prefix='/changeBook')
 
@@ -15,19 +11,25 @@ changeBook = Blueprint('changeBook', __name__, url_prefix='/changeBook')
 def getMyBooks():
     if request.method == METHODTYPE.GET:
         abort(405)
-    user_id = request.values.get("user_id")
-    plans = User_Book_Study_Plan.get_list(user_id=user_id)
-    books = []
-    for plan in plans:
-        print(plan)
-        book_id = plan["book_id"]["$uuid"]
-        book = Book.get_one(book_id=book_id)
-        word_amount = Word_Book_Correspond.objects(book_id=book_id).count()
-        word_learnt = User_Book_Learn_Record.objects(user_id=user_id, book_id=book_id).count()
-        word_to_learn = word_amount - word_learnt
-        books.append({"book_cover": book["cover"], "book_name": book["book_name"], "words": word_amount,
-                      "to_learn": word_to_learn})
-    return jsonify(books)
+    try:
+        user_id = request.values.get("user_id")
+        plans = User_Book_Study_Plan.get_list(user_id=user_id)
+        books = []
+        for plan in plans:
+            print(plan)
+            book_id = plan["book_id"]["$uuid"]
+            book = Book.get_one(book_id=book_id)
+            word_amount = Word_Book_Correspond.objects(book_id=book_id).count()
+            word_learnt = User_Book_Learn_Record.objects(user_id=user_id, book_id=book_id, is_studying=True).count()
+            book_info = {"book_id": book_id, "book_cover": book["cover"], "book_name": book["book_name"],
+                         "words": word_amount, "learned": word_learnt}
+            if plan["is_studying"] == True:
+                books.insert(0, book_info)
+            else:
+                books.append(book_info)
+        return jsonify({"books": books})
+    except Exception as e:
+        return jsonify({"msg": str(e)})
 
 
 @changeBook.route('/deleteBook', methods=[METHODTYPE.POST])
@@ -45,7 +47,7 @@ def deleteBook():
                 plan.delete()
                 msg = "成功"
             except:
-                msg = "不要删除唯一一本书嘛"
+                msg = "这是最后一本书"
         else:
             plan.delete()
             msg = "成功"
@@ -71,7 +73,7 @@ def change():
     try:
         user_id = request.values.get("user_id")
         book_id = request.values.get("book_id")
-        plan = User_Book_Study_Plan.objects.get(is_studying=True)
+        plan = User_Book_Study_Plan.objects.get(user_id=user_id, is_studying=True)
         plan.update(set__is_studying=False)
         plan.save()
         plan = User_Book_Study_Plan.objects.get(user_id=user_id, book_id=book_id)

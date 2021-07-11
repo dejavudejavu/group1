@@ -19,8 +19,8 @@
 <view class="mean" wx:for="{{sentence}}" style="display:flex;flex-direction:row">
   <view >{{index+1}}.</view>
   <view style="display:flex;flex-direction:column;margin-right:5px;width:533rpx; ">
-    <view>{{item.eng}}</view>
-    <view >{{item.chi}}</view>
+    <view>{{item.examples[0]}}</view>
+    <view >{{item.examples[1]}}</view>
   </view>
   <image src="pic/senVoice.png" style="width:55rpx;height:55rpx;margin-left:59rpx;"></image>
 </view>

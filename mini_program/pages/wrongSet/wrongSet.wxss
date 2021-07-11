@@ -12,8 +12,6 @@
   font-size: 28rpx;
 }
 .cellSty{
-  padding-left: 32rpx;
-  padding-right: 32rpx;
   display:flex;
   justify-content: space-between;
   margin-bottom: 20rpx;
@@ -31,4 +29,12 @@
   border-Radius: 23px;
   width:362rpx;
   height:100rpx;
+}
+.dePart{
+  width:80px;
+  height:100%;
+  background-color: rgb(255,96,96);
+  color:white;
+  font-size:28rpx;
+  text-align: center;
 }

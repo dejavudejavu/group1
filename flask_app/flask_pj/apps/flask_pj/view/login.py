@@ -12,11 +12,13 @@ login = Blueprint('login', __name__, url_prefix='/login')
 
 @login.route('/', methods=[METHODTYPE.POST])
 def get_login():
-    url = "https://api.weixin.qq.com/sns/jscode2session?appid="+"wx90fde58d6daa95b4" + \
-        "&secret="+"ec3537428edc0fe81907cf03f6b75f79"+"&js_code=" + \
-        request.values.get("user_id")+"&grant_type=authorization_code"    
-    res = requests.get(url)    
-    print(res.json()["openid"])
+    print("request.values.get('user_id')", request.values.get("user_id"))
+    url = "https://api.weixin.qq.com/sns/jscode2session?appid="+"wx90fde58d6daa95b4" + "&secret=" + \
+        "ec3537428edc0fe81907cf03f6b75f79"+"&js_code=" + \
+        request.values.get("user_id")+"&grant_type=authorization_code"
+    res = requests.get(url)
+    print(res.json())
+    # print(res.json()["openid"])
     # print("user_id", request.values.get("user_id"))
     if request.method == METHODTYPE.GET:
         abort(405)

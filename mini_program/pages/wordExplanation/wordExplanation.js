@@ -39,10 +39,20 @@ Page({
       }
     })
   } else{
-    that.setData({
-      displayState:"已加入错题本",
-      wordState:0,
-    })
+    wx.showModal({
+      content: '是否加入错题本？',
+      success: function (e) {
+        if (e.confirm) {
+          that.setData({
+            displayState:"已加入错题本",
+            wordState:0,
+          })
+          console.log('用户点击确定')
+        } else {
+          console.log('用户点击取消')
+        }
+      }
+    })    
   }
   },
   

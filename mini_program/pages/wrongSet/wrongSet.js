@@ -5,68 +5,130 @@ Page({
    * 页面的初始数据
    */
   data: {
-    wrongWords:[
-      {word:"afternoon1",symbol:"[ɑ:ftnu:n]",meaning:"下午1",type:"n",status:true,exSrc:"pic/open.png"},
-      {word:"afternoon2",symbol:"[ɑ:ftnu:n]",meaning:"下午2",type:"n",status:true,exSrc:"pic/open.png"},
-      {word:"afternoon3",symbol:"[ɑ:ftnu:n]",meaning:"下午3",type:"n",status:true,exSrc:"pic/open.png"},
-      {word:"afternoon3",symbol:"[ɑ:ftnu:n]",meaning:"下午3",type:"n",status:true,exSrc:"pic/open.png"},
-      {word:"afternoon3",symbol:"[ɑ:ftnu:n]",meaning:"下午3",type:"n",status:true,exSrc:"pic/open.png"},
-      {word:"afternoon3",symbol:"[ɑ:ftnu:n]",meaning:"下午3",type:"n",status:true,exSrc:"pic/open.png"},
-      {word:"afternoon3",symbol:"[ɑ:ftnu:n]",meaning:"下午3",type:"n",status:true,exSrc:"pic/open.png"},
-    ],
-    exSrc:"pic/open.png",//查看释义右侧图标
-    exStatus:false,//展开状态，true为展开，false为关闭
-    checked:false,
+    words:[],
+    total:"",
+    audioAction: {
+      method: 'pause'
+    },  
+    music:"", 
   },
+  playAudio: function () {
+    this.setData({
+      audioAction: {
+        method: 'play'
+      }
+    });
+  },   
   onLoad:function(){
+    wx.setNavigationBarTitle({ title:'错词本'})
+    var that=this
     wx.request({
-      url: app.globalData.baseUrl+'/practice/getWords', 
+      url: app.globalData.baseUrl+'/words/getWords', 
       method:"POST",
       data: {
         user_id:app.globalData.userInfo.user_id,
-        source:2
+        source:1
       },      
       header: {
         "Content-Type": "application/x-www-form-urlencoded"// 默认值
       },
       success (res) {
-        var data=res.data
-        console.log("words",data)
+        var words=res.data['words']
+        var total=words.length
+        console.log("words",words)
+        for(var i=0;i<words.length;i++){
+          words[i].status=true
+          words[i].pronunciation=app.globalData.baseUrl+words[i].pronunciation
+        }
+        that.setData({
+          words:words,
+          total:total
+        })
       }    
     })
+  },
+  collection(e){
+    var word_id=e.currentTarget.dataset.word_id
+    var index=e.currentTarget.dataset.index
+    console.log("index",index)
+    var that=this
+    wx.request({
+      url: app.globalData.baseUrl+'/words/collection', 
+      method:"POST",
+      data:{
+        user_id:app.globalData.userInfo.user_id,
+        word_id:word_id,
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"// 默认值
+      },
+      success (res) {
+        var words=that.data.words
+        console.log("words",words)
+        words[index].is_in_collection=!words[index].is_in_collection
+        that.setData({
+          words:words
+        })
+      }
+    })
+  },     
+  play(e){
+    const id=e.currentTarget.dataset.id
+    var music=this.data.words[id].pronunciation
+    this.setData({
+      music:music
+    })
+    this.playAudio()
+  },
+  practice(){
+    wx.navigateTo({
+      url: '../doHomework/doHomework?type=2' + '&path=getWords',
+    })      
   },
   interpretationCli(e){
     const id=e.currentTarget.dataset.id;
     console.log(e);
-    if(this.data.wrongWords[id].status==true){
-      this.setData({
-        ["wrongWords["+id+"].exSrc"]:"pic/back.png",
-        ["wrongWords["+id+"].status"]:false,
-    })}else{
-      this.setData({
-        ["wrongWords["+id+"].exSrc"]:"pic/open.png",
-        ["wrongWords["+id+"].status"]:true,
-      })
-    }
+    var words=this.data.words
+    words[id].status=!words[id].status
+    this.setData({
+      words:words
+    })
+    // if(this.data.wrongWords[id].status==true){
+    //   this.setData({
+    //     ["wrongWords["+id+"].exSrc"]:"pic/back.png",
+    //     ["wrongWords["+id+"].status"]:false,
+    // })}else{
+    //   this.setData({
+    //     ["wrongWords["+id+"].exSrc"]:"pic/open.png",
+    //     ["wrongWords["+id+"].status"]:true,
+    //   })
+    // }
   },
-
   switchCli(e){
-    const len=this.data.wrongWords.length;
-    console.log(e);
-    if(this.data.checked==false){
-    for(var i=0;i<len;i++){
-      this.setData({
-        ["wrongWords["+i+"].status"]:false,
-        checked:true,
-      })
-    }}else{
-      for(var i=0;i<len;i++){
-        this.setData({
-          ["wrongWords["+i+"].status"]:true,
-          checked:false,
-        })
-      }
+    var checked=e.detail.value
+    var words=this.data.words
+    for(var i=0;i<words.length;i++){
+      words[i].status=!checked
     }
+    this.setData({
+      words:words
+    })
+    // const len=this.data.wrongWords.length;
+    // console.log(e);
+    // if(this.data.checked==false){
+    // for(var i=0;i<len;i++){
+    //   this.setData({
+    //     ["wrongWords["+i+"].status"]:false,
+    //     checked:true,
+    //   })
+    // }}else{
+    //   for(var i=0;i<len;i++){
+    //     this.setData({
+    //       ["wrongWords["+i+"].status"]:true,
+    //       checked:false,
+    //     })
+    //   }
+    // }
 
   }
 })

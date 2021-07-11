@@ -18,7 +18,7 @@
 .bookPar1{
   font-size:32rpx;
   color:rgb(51,51,51);
-  margin-bottom: 67rpx;
+  flex:1;
 }
 .bookPar2{
   font-size:24rpx;

@@ -1,10 +1,7 @@
-from flask import Blueprint, jsonify, current_app, request, abort
-from flask_pj.apps.utils.constants import METHODTYPE
-import flask_pj.apps.utils.constants as constant
+from flask import Blueprint, jsonify, request
+
 from flask_pj.apps.flask_pj.model import *
-from bson import json_util
-import json
-from flask_pj.apps.utils import jsonHelper
+from flask_pj.apps.utils.constants import METHODTYPE
 
 select = Blueprint('select', __name__, url_prefix='/selectBook')
 
@@ -12,16 +9,19 @@ select = Blueprint('select', __name__, url_prefix='/selectBook')
 # 已测
 @select.route('/getBooks', methods=[METHODTYPE.POST])
 def api_get_all_books():
-    book_infos = Book.get_list()
-    books = []
-    for book_info in book_infos:
-        book_all_words_numbers = Word_Book_Correspond.get_list(book_id=book_info["_id"]["$uuid"])
-        book_all_words_numbers = len(book_all_words_numbers)
-        book_one = {"book_name": book_info["book_name"], "book_cover": book_info["cover"],
-                    "words": book_all_words_numbers, "level": book_info["level"],
-                    "category": book_info["category"], "book_id": book_info["_id"]["$uuid"]}
-        books.append(book_one)
-    return jsonify(books)
+    try:
+        book_infos = Book.get_list()
+        books = []
+        for book_info in book_infos:
+            book_all_words_numbers = Word_Book_Correspond.get_list(book_id=book_info["_id"]["$uuid"])
+            book_all_words_numbers = len(book_all_words_numbers)
+            book_one = {"book_name": book_info["book_name"], "book_cover": book_info["cover"],
+                        "words": book_all_words_numbers, "level": book_info["level"],
+                        "category": book_info["category"], "book_id": book_info["_id"]["$uuid"]}
+            books.append(book_one)
+        return jsonify(books)
+    except Exception as e:
+        return jsonify({"msg": str(e)})
 
 
 @select.route('/select', methods=[METHODTYPE.POST])

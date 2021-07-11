@@ -1,10 +1,6 @@
-import math
-
-import flask
-import requests
 from flask import Blueprint, jsonify, current_app, request, abort
-from flask_pj.apps.utils.constants import METHODTYPE
 
+from flask_pj.apps.utils.constants import METHODTYPE
 
 api = Blueprint('api', __name__)
 

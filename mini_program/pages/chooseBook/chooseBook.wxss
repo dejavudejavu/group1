@@ -58,6 +58,20 @@
 .bookPar{
   margin-top: 10rpx;
   margin-right: 42rpx;
-  margin-left:24rpx;
-  
+  margin-left:24rpx;  
+}
+.p-flex{
+  flex:1;
+  font-size: 30rpx;
+  padding: 15rpx 0;
+}
+.c-title{
+  font-size: 35rpx;
+  font-weight: 600;
+  padding: 20rpx 0;
+}
+.dot{
+  color: rgb(73,137,255);
+  margin: 0 20rpx;
+  font-size: 35rpx;
 }

@@ -1,7 +1,7 @@
 <!--pages/personal/personal.wxml-->
-<view class='homeBG' style="display:flex;flex-direction:column;padding: 5% 4%;">
-  <view class='round-angle' style="flex:1;margin-bottom: 4%;padding:4%;position: relative;">
-    <view style="display:flex;position: relative; top: -12%;">
+<view class='homeBG' style="display:flex;flex-direction:column;padding:5% 4%;padding-bottom: 6%;">
+  <view class='round-angle' style="flex:1;margin-bottom:4%;padding:0% 4%;padding-top:1%;position:relative;display:flex;flex-direction:column;height: 37%;">
+    <view style="display:flex;position: relative;height: 30%;padding-top:1%;">
       <van-image
         round
         width="4rem"
@@ -12,34 +12,30 @@
       />
       <view style="align-self: center;">{{user_name}}</view>  
     </view>
-    <view style="display:flex;flex-direction:column;height:79%">
-      <view style="flex:2;">
-        <view>
-          <view style="text-align:center">
-            <view style="display:inline-block;margin: 40rpx;">
-              <view style="display: inline-block;font-size: 100rpx;">{{clockons.length}}</view>
-              <view style="display: inline-block;">天</view>
-              <view>累计打卡</view>              
+    <view style="display:flex;flex-direction:column;flex: 1;padding-bottom: 3%;">
+      <view style="flex:1;text-align:center">
+            <view style="display:inline-block;margin:2%;margin-right:40rpx;">
+              <view style="display:inline-block;font-size:95rpx;">{{clockons.length}}</view>
+              <view style="display: inline-block;font-size:35rpx;">天</view>
+              <view style="font-size:35rpx;">累计打卡</view>              
             </view>
-            <view style="display:inline-block;margin: 40rpx">
-              <view style="display: inline-block;font-size: 100rpx;">{{max_length}}</view>
+            <view style="display:inline-block;margin:2%;margin-right:40rpx;">
+              <view style="display:inline-block;font-size:95rpx;">{{max_length}}</view>
               <view style="display: inline-block;">天</view>
-              <view>最长连续</view>              
-            </view>            
-          </view>
-        </view>
+              <view style="font-size:35rpx;">最长连续</view>              
+            </view>
       </view>
         <van-divider />     
-      <view style="flex:1;"> 
-        <view style="position: relative;top: 50%; transform: translate(0, -50%);">每天背单词提醒</view>
-        <van-switch checked="{{ checked }}" bind:change="onChange" style="float:right" />
+      <view style="display:flex;"> 
+        <view style="position:relative;margin-top:3%;font-size:32rpx;">每天背单词提醒</view>
+        <van-switch checked="{{ checked }}" bind:change="onChange" style="flex: 1;" />
       </view>
     </view>    
   </view>
-  <view class='round-angle' style="flex:2">
+  <view class='round-angle' style="padding-bottom:1%">
     <!--日历-->
     <!--年月切换栏-->
-    <view style="display:flex;justify-content:space-between;margin-top:27rpx">
+    <view style="display:flex;justify-content:space-between;margin-top:4%;">
       <image src="pic/toL.png" style="width:56rpx;height:68rpx;margin-left:32rpx;" bindtap="toL"></image>
       <view style="display:flex;flex-direction:column;">
         <view style="font-size:38rpx;color:rgb(51,51,51);text-align:center;font-weight:700;">{{choosedDay.month}}月</view>
@@ -70,7 +66,8 @@
     </view>
     <view style="text-align: center; margin: 20rpx;font-size: 20rpx;color: rgb(187,187,187);">背单词，贵在坚持记得每日打卡哦！  </view>
     <view style="text-align: center;">
-      <van-button round type="info">点我打卡</van-button>
+      <van-button round type="info" bindtap="clockin" wx:if="{{!today.isSign}}">点我打卡</van-button>
+      <van-button round type="info" bindtap="share" wx:else>去分享</van-button>
     </view>
   </view>
 </view>

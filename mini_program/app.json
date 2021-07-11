@@ -1,6 +1,8 @@
 {
-  "pages": [     
-    "pages/homepage/homepage"
+  "pages": [
+    "pages/homepage/homepage",
+    "pages/wordsList/wordsList",
+    "pages/collection/collection"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -17,6 +19,7 @@
     "van-progress": "@vant/weapp/progress/index",
     "van-divider": "@vant/weapp/divider/index",
     "van-switch": "@vant/weapp/switch/index",
-    "van-toast": "@vant/weapp/toast/index"
+    "van-toast": "@vant/weapp/toast/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   }
 }

@@ -1,12 +1,7 @@
-import math
+from flask import Blueprint, jsonify, request, abort
 
-from flask import Blueprint, jsonify, current_app, request, abort
-from flask_pj.apps.utils.constants import METHODTYPE
-import flask_pj.apps.utils.constants as constant
 from flask_pj.apps.flask_pj.model import *
-from bson import json_util
-import json
-from flask_pj.apps.utils import jsonHelper
+from flask_pj.apps.utils.constants import METHODTYPE
 
 myPlan = Blueprint('myPlan', __name__, url_prefix='/myPlan')
 
@@ -15,13 +10,17 @@ myPlan = Blueprint('myPlan', __name__, url_prefix='/myPlan')
 def getPlan():
     if request.method == METHODTYPE.GET:
         abort(405)
-    user_id = request.values.get("user_id")
-    plan = User_Book_Study_Plan.get_one(user_id=user_id, is_studying=True)
-    book_id = plan["book_id"]["$uuid"]
-    book = Book.get_one(pk=book_id)
-    total = Word_Book_Correspond.objects(book_id=book_id).count()
-    return jsonify({"daily_learn": plan["daily_learn"], "daily_review": plan["daily_review"],
-                    "book_cover": book["cover"], "book_name": book["book_name"], "total": total})
+    try:
+        user_id = request.values.get("user_id")
+        plan = User_Book_Study_Plan.get_one(user_id=user_id, is_studying=True)
+        book_id = plan["book_id"]["$uuid"]
+        book = Book.get_one(pk=book_id)
+        total = Word_Book_Correspond.objects(book_id=book_id).count()
+        return jsonify({"msg": "成功", "daily_learn": plan["daily_learn"], "daily_review": plan["daily_review"],
+                        "book_cover": book["cover"], "book_name": book["book_name"], "total": total})
+    except Exception as e:
+        return jsonify({"msg": str(e), "daily_learn": None, "daily_review": None,
+                        "book_cover": None, "book_name": None, "total": None})
 
 
 @myPlan.route('/changePlan', methods=[METHODTYPE.POST])

@@ -13,8 +13,8 @@ WORD = UUID('6ba7b812-9dad-11d1-80b4-00c04fd430c8')
 
 class User(db.Document):
     user_id = db.StringField(primary_key=True)
-    user_name = db.StringField(required=True, unique=True)
-    avatar = db.StringField(required=True, unique=True)
+    user_name = db.StringField(required=True)
+    avatar = db.StringField(required=True)
 
     @staticmethod
     def get_one(**kwargs):
@@ -29,7 +29,7 @@ class User(db.Document):
 class Book(db.Document):
     book_id = db.UUIDField(primary_key=True)
     book_name = db.StringField(required=True, unique=True)
-    cover = db.StringField(required=True, unique=True)
+    cover = db.StringField(required=True)
     level = db.StringField(required=True)
     category = db.StringField(required=True)
 
@@ -92,6 +92,7 @@ class Word_Book_Correspond(db.Document):
 class User_Learn_Status(db.Document):
     user_id = db.ReferenceField(User, reverse_delete_rule=mongoengine.CASCADE)
     clockons = db.StringField(required=True, unique_with='user_id')
+    is_clockin = db.BooleanField(required=True)
     learn_amount = db.IntField(required=True)
     review_amount = db.IntField(required=True)
 
@@ -126,6 +127,7 @@ class User_Book_Learn_Record(db.Document):
     word_id = db.ReferenceField(Word, reverse_delete_rule=mongoengine.CASCADE, unique_with=['user_id', 'book_id'])
     is_incorrect = db.BooleanField(required=True)
     is_star = db.BooleanField(required=True)
+    is_studying = db.BooleanField(required=True)
     study_time = db.StringField(required=True)
 
     @staticmethod

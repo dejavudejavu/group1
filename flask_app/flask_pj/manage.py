@@ -22,7 +22,7 @@ __all__ = ['main']
 def main():
     app = create_app()
     args = parse_args()
-    # root_dir = os.path.dirname(os.path.abspath('.'))
+    root_dir = os.path.dirname(os.path.abspath('.'))
     # print(root_dir)
     # with open(root_dir + "\\flask_pj\\apps\\static\\books.csv", "r", encoding="gb2312") as f:
     #     for line in f.readlines():
@@ -69,9 +69,9 @@ def main():
     #         word_explanation = info[1]
     #         if word_explanation[-1:] == "\n":
     #             word_explanation = word_explanation[:-1]
-    #         word_example = info[3] + info[4] + "\n" + info[5] + info[6]
-    #         word = Word().init(writing=word_writing, symbol=word_symbol, pronunciation=word_pronunciation,
-    #                            explanation=word_explanation, example=word_example)
+    #         word_example = info[3] + "\n" + info[4] + "\n" + info[5] + "\n" + info[6]
+    #         word = Word.objects.get(writing=word_writing)
+    #         word.update(set__example=word_example)
     #         word.save()
     #     print(len(datas))
     if args.cmd.isdigit():

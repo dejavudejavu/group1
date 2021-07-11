@@ -15,22 +15,30 @@ Page({
     to_learn: "",
     words: "" ,
     total:"",
-    learned:""   
+    learned:"",
+    // start_show:false
   },
   toWrongCollection(){
     wx.navigateTo({
       url: '../wrongSet/wrongSet',
     })
   },
+  toCollection(){
+    wx.navigateTo({
+      url: '../collection/collection',
+    })    
+  },
   toSetPlan(){
     wx.navigateTo({
       url: '../myPlan/myPlan'
     })    
   },
-  toStart(){
+  toStart(e){
+    var type=e.currentTarget.dataset.type
+    var path=e.currentTarget.dataset.path
     wx.navigateTo({
-      url: '../doHomework/doHomework'
-    })
+      url: '../doHomework/doHomework?type=' + type+'&path='+path,
+    })    
   },
   toPersonal(){
     wx.navigateTo({
@@ -42,99 +50,95 @@ Page({
       url: '../myBook/myBook'
     })
   },
+  toWordsList(){
+    wx.navigateTo({
+      url: '../wordsList/wordsList'
+    })    
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(app.globalData.userInfo==null){
-      var that=this
-      wx.login({
-        success: res => {
-          console.log("res",res) 
-          var code=res.code  
-          wx.getSetting({
-            success (res){
-              if (res.authSetting['scope.userInfo']) {
-                console.log("已授权")
-                wx.getUserInfo({
-                  success: function (res) {
-                    var userInfo=JSON.parse(res.rawData)
-                    console.log("userInfo",userInfo)
-                    app.globalData.userInfo= {
-                      user_name:userInfo.nickName,
-                      user_id:code,
-                      avatar:userInfo.avatarUrl
+    var that=this
+    wx.login({
+      success: res => {
+        console.log("res",res) 
+        var code=res.code  
+        wx.getSetting({
+          success (res){
+            if (res.authSetting['scope.userInfo']) {
+              console.log("已授权")
+              wx.getUserInfo({
+                success: function (res) {
+                  var userInfo=JSON.parse(res.rawData)
+                  console.log("userInfo",userInfo)
+                  app.globalData.userInfo= {
+                    user_name:userInfo.nickName,
+                    user_id:code,
+                    avatar:userInfo.avatarUrl
+                  }
+                  wx.request({
+                    url: app.globalData.baseUrl+'/login/', 
+                    method:"POST",
+                    data: app.globalData.userInfo,
+                    header: {
+                      "Content-Type": "application/x-www-form-urlencoded"// 默认值
+                    },
+                    success (res) {     
+                      var data=res.data             
+                      console.log(data)
+                      app.globalData.userInfo.user_id=data.user_id
+                      console.log("app.globalData.userInfo",app.globalData.userInfo) 
+                      that.getData()                                      
+                    },
+                    fail(err) {
+                      console.log(err)
                     }
-                    wx.request({
-                      url: app.globalData.baseUrl+'/login/', 
-                      method:"POST",
-                      data: app.globalData.userInfo,
-                      header: {
-                        "Content-Type": "application/x-www-form-urlencoded"// 默认值
-                      },
-                      success (res) {     
-                        var data=res.data             
-                        console.log(data)
-                        app.globalData.userInfo.user_id=data.user_id
-                        console.log("app.globalData.userInfo",app.globalData.userInfo)
-                        that.setData({
-                          avatar:app.globalData.userInfo.avatar,
-                          user_name:app.globalData.userInfo.user_name
-                        })  
-                        wx.request({
-                          url: app.globalData.baseUrl+'/homepage/', 
-                          method:"POST",
-                          data: {
-                            user_id:app.globalData.userInfo.user_id,
-                          },
-                          header: {
-                            "Content-Type": "application/x-www-form-urlencoded"// 默认值
-                          },
-                          success (res) { 
-                            console.log(res)
-                            var data=res.data
-                            that.setData({
-                              book_cover:app.globalData.baseUrl+data.book_cover,
-                              book_name:data.book_name,
-                              days:data.days,
-                              left_days:data.left_days,
-                              to_learn: data.to_learn,
-                              words: data.words,
-                              total:data.total,
-                              learned:data.learned
-                            })
-                            if(res.data.days==null){
-                              wx.navigateTo({
-                                url: '../chooseBook/chooseBook',
-                              })                         
-                            }
-                          }
-                        })                             
-                      },
-                      fail(err) {
-                        console.log(err)
-                      }
-                    })                 
-                  },
-                })                
-              }else{
-                console.log("未授权")
-              }
+                  }) 
+                },
+              })                
+            }else{
+              console.log("未授权")
             }
-          })         
-
-        }
-      })        
-    }
-    else{
-      this.setData({
-        avatar:app.globalData.userInfo.avatarUrl,
-        user_name:app.globalData.userInfo.nickName
-      })  
-    }
-    // 登录
+          }
+        })         
+      }
+    })        
   },
-
+  getData(){
+    var that=this
+    wx.request({
+      url: app.globalData.baseUrl+'/homepage/', 
+      method:"POST",
+      data: {
+        user_id:app.globalData.userInfo.user_id,
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"// 默认值
+      },
+      success (res) { 
+        console.log('homepage',res)
+        var data=res.data
+        that.setData({
+          book_cover:app.globalData.baseUrl+data.book_cover,
+          book_name:data.book_name,
+          days:data.days,
+          left_days:data.left_days,
+          to_learn: data.to_learn,
+          words: data.words,
+          total:data.total,
+          learned:data.learned,
+          avatar:app.globalData.userInfo.avatar,
+          user_name:app.globalData.userInfo.user_name                             
+        })
+        if(res.data.days==null){
+          wx.navigateTo({
+            url: '../chooseBook/chooseBook',
+          })                         
+        }
+      }
+    })       
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -145,7 +149,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (option) {
 
   },
 
