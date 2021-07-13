@@ -13,8 +13,8 @@ login = Blueprint('login', __name__, url_prefix='/login')
 @login.route('/', methods=[METHODTYPE.POST])
 def get_login():
     print("request.values.get('user_id')", request.values.get("user_id"))
-    url = "https://api.weixin.qq.com/sns/jscode2session?appid="+"wx90fde58d6daa95b4" + "&secret=" + \
-        "ec3537428edc0fe81907cf03f6b75f79"+"&js_code=" + \
+    url = "https://api.weixin.qq.com/sns/jscode2session?appid="+"wxfacc648774646439" + "&secret=" + \
+        "d1148882a0a2e922a4493c0dd1913102"+"&js_code=" + \
         request.values.get("user_id")+"&grant_type=authorization_code"
     res = requests.get(url)
     print(res.json())
@@ -33,7 +33,7 @@ def get_login():
         except:
             user_name = request.values.get("user_name")
             avatar = request.values.get("avatar")
-            user = User(user_id=user_id, user_name=user_name, avatar=avatar)
+            user = User(user_id=user_id, user_name=user_name, avatar=avatar, is_remind=False)
             user.save()
             msg = "成功"
     except Exception as e:

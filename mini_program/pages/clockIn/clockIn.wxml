@@ -4,7 +4,7 @@
 <!--顶部白色框框部分-->
 <view class="topBox" style="display:flex;flex-direction:column;">
   <view style="display:flex;">
-    <image src="pic/icon.png" class="icon"></image>
+    <image src="{{url}}/pic/icon.png" class="icon"></image>
     <text class="textAppraise">{{appraise}}</text>
   </view>
   <view class="textComment">{{comment}}</view>
@@ -12,12 +12,12 @@
 <!--日历-->
 <!--年月切换栏-->
 <view style="display:flex;justify-content:space-between;margin-top:54rpx">
-  <image src="pic/toL.png" style="width:56rpx;height:68rpx;margin-left:32rpx;" bindtap="toL"></image>
+  <image src="{{url}}/pic/toL.png" style="width:56rpx;height:68rpx;margin-left:32rpx;" bindtap="toL"></image>
   <view style="display:flex;flex-direction:column;">
     <view style="font-size:38rpx;color:rgb(51,51,51);text-align:center;font-weight:700;">{{choosedDay.month}}月</view>
     <view style="font-size:24rpx;color:rgb(187,187,187);text-align:center">{{choosedDay.year}}</view>
   </view>
-  <image src="pic/toR.png" style="width:56rpx;height:68rpx;margin-right:32rpx;" bindtap="toR"></image>
+  <image src="{{url}}/pic/toR.png" style="width:56rpx;height:68rpx;margin-right:32rpx;" bindtap="toR"></image>
 </view>
 <!--一周文字-->
 <view class="weekW">
@@ -32,7 +32,7 @@
       <view wx:for="{{7}}" wx:for-index="k" wx:key="k"
         class="{{days[j+k].thisMonth?'choosedCell':'unchoosedCell'}} cellCal">
         <view wx:if="{{days[j+k].isSign}}" >
-          <image src="pic/already.png" class="picBac"></image>
+          <image src="{{url}}/pic/already.png" class="picBac"></image>
           <view style="margin-top:-71rpx">{{days[j+k].date}}</view>
         </view>
         <view wx:else>{{days[j+k].date}}</view>

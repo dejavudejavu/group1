@@ -13,8 +13,11 @@ Page({
     max_length:"",
     user_name:"",
     avatar:"",
+    show: false,
+    url:app.globalData.baseUrl,
+    is_remind:"",
+    remind_time:""
   },
-
   onLoad:function(options){
     wx.setNavigationBarTitle({ title:'我的'})
     const date=new Date();
@@ -165,7 +168,9 @@ Page({
           max_length:data.max_length,
           clockons:data.clockons,
           user_name:app.globalData.userInfo.user_name,
-          avatar:app.globalData.userInfo.avatar
+          avatar:app.globalData.userInfo.avatar,
+          is_remind:data.is_remind,
+          remind_time:data.remind_time
         })
         that.fillClockin()
       }   
@@ -238,6 +243,100 @@ Page({
   share(){
     wx.navigateTo({
       url: '../share/share',
+    })
+  },
+  onChange(e){
+    var checked=e.detail
+    var that=this
+    if(checked==true){
+
+    }
+   
+    if(checked==true){
+      wx.requestSubscribeMessage({
+        tmplIds: ['bNEVQXRERG9H1mQxGf-ctuarD8FNPmt81eqhypD--L4'],
+        success (res) {
+          console.log('请求权限',res)
+          if(res['bNEVQXRERG9H1mQxGf-ctuarD8FNPmt81eqhypD--L4']!="reject"){
+            wx.request({
+              url: app.globalData.baseUrl+'/personal/sendMessage', 
+              method:"POST",
+              data: {
+                user_id:app.globalData.userInfo.user_id,
+                time:that.data.remind_time,
+                action:checked?1:2
+              },      
+              header: {
+                "Content-Type": "application/x-www-form-urlencoded"// 默认值
+              },
+              success (res) {
+                console.log(res)
+                that.setData({
+                  is_remind:checked,
+                })                    
+              },            
+            })                 
+          }
+          },        
+      })     
+    }
+    else{
+      wx.request({
+        url: app.globalData.baseUrl+'/personal/sendMessage', 
+        method:"POST",
+        data: {
+          user_id:app.globalData.userInfo.user_id,
+          time:that.data.remind_time,
+          action:checked?1:2
+        },      
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"// 默认值
+        },
+        success (res) {
+          console.log(res)
+          that.setData({
+            is_remind:checked,
+          })                    
+        },            
+      })    
+    }   
+  },
+  onInput(event) {
+    this.setData({
+      remind_time: event.detail,
+    });
+  },
+  confirm(event){
+    var that=this
+    wx.request({
+      url: app.globalData.baseUrl+'/personal/sendMessage', 
+      method:"POST",
+      data: {
+        user_id:app.globalData.userInfo.user_id,
+        time:event.detail,
+        action:3
+      },      
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"// 默认值
+      },
+      success (res) {
+        console.log(res)
+        that.setData({
+          remind_time: event.detail,
+          show:false
+        });                  
+      }
+    })          
+ 
+  },
+  cancel(){
+    this.setData({
+      show:false
+    })
+  },
+  changeTime(){    
+    this.setData({
+      show:true
     })
   }
 })

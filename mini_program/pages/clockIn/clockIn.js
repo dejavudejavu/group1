@@ -16,6 +16,7 @@ Page({
     today:{year:2021,month:1,day:1,isSign:false},
     choosedDay:{year:2021,month:1,day:1,isSign:false},
     weekW:["日","一","二","三","四","五","六"],
+    url:app.globalData.baseUrl
   },
   onLoad:function(options){
     wx.setNavigationBarTitle({ title:'打卡'})

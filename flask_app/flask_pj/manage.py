@@ -22,7 +22,7 @@ __all__ = ['main']
 def main():
     app = create_app()
     args = parse_args()
-    root_dir = os.path.dirname(os.path.abspath('.'))
+    # root_dir = os.path.dirname(os.path.abspath('.'))
     # print(root_dir)
     # with open(root_dir + "\\flask_pj\\apps\\static\\books.csv", "r", encoding="gb2312") as f:
     #     for line in f.readlines():

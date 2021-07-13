@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    picSrc:"pic/icon.png",
     nowBook:"",
     allBooks:[],
+    url:app.globalData.baseUrl
   },
   onLoad:function(){
     wx.setNavigationBarTitle({ title:'我的词书'})

@@ -9,8 +9,11 @@ from flask_cors import CORS
 # sys.path.append("flask_pj/model")
 # import model
 from flask_cors import CORS
+from flask_apscheduler import APScheduler
+scheduler = APScheduler()
 
 db = MongoEngine()
+
 
 def override_json_encoder(app: Flask):
     from bson import ObjectId

@@ -15,6 +15,8 @@ class User(db.Document):
     user_id = db.StringField(primary_key=True)
     user_name = db.StringField(required=True)
     avatar = db.StringField(required=True)
+    remind_time = db.StringField(required=True, default="00:00")
+    is_remind = db.BooleanField(required=True)
 
     @staticmethod
     def get_one(**kwargs):

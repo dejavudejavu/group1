@@ -11,6 +11,7 @@ Page({
       method: 'pause'
     },  
     music:"", 
+    url:app.globalData.baseUrl
   },
   playAudio: function () {
     this.setData({
@@ -95,11 +96,11 @@ Page({
     })
     // if(this.data.wrongWords[id].status==true){
     //   this.setData({
-    //     ["wrongWords["+id+"].exSrc"]:"pic/back.png",
+    //     ["wrongWords["+id+"].exSrc"]:this.data.url+"/pic/back.png",
     //     ["wrongWords["+id+"].status"]:false,
     // })}else{
     //   this.setData({
-    //     ["wrongWords["+id+"].exSrc"]:"pic/open.png",
+    //     ["wrongWords["+id+"].exSrc"]:this.data.url+"/pic/open.png",
     //     ["wrongWords["+id+"].status"]:true,
     //   })
     // }

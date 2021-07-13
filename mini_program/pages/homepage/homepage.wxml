@@ -26,12 +26,12 @@
         <view style="margin-left: 20rpx;">
           <view style="position: relative;top: 25%; font-size: 36rpx; font-weight: bold;">{{book_name}}</view>
           <view style="position: absolute; bottom: 3%;font-size: 15px;height:40rpx;color:#c1c1c9" bindtap='toWordsList'>
-            <image src="./img/word_logo.png" style="height:40rpx;width:40rpx;display:inline-block"></image>
+            <image src="{{url}}/img/word_logo.png" style="height:40rpx;width:40rpx;display:inline-block"></image>
             <view style="display:inline-block;transform: translate(0, -6rpx);">单词表</view>                      
           </view>
         </view>  
         <view style="position: absolute; bottom: 0; right: 0;width: 134rpx; height: 64rpx;" bindtap="toChooseBook">
-          <image src="../../assets/logo/change_book.png" style="height:100%;width:100%"/>
+          <image src="{{url}}/img/change_book.png" style="height:100%;width:100%"/>
         </view>
       </view>
       <view style="flex:0.3;font-size:30rpx">今日待学</view>
@@ -42,7 +42,7 @@
         <view style="flex: 1;color:#c1c1c9">已学习 <text style="color:#58a1ff">{{learned}}</text>/{{total}}</view>
         <view style="flex: 1;color:#c1c1c9">剩余<text style="color:#58a1ff">{{left_days}}</text>天</view>
         <view style="flex: 1;color:#c1c1c9" bindtap="toSetPlan"> 
-          <image src="./img/plan.png" style="height:40rpx;width:40rpx;vertical-align: middle;"></image>
+          <image src="{{url}}/img/plan.png" style="height:40rpx;width:40rpx;vertical-align: middle;"></image>
           <text>调整计划</text>
         </view>
       </view>
@@ -65,20 +65,20 @@
     </view>
     
     <view style="flex:1" >
-      <view  class='round-angle' bindtap="toWrongCollection" style="height:100%;width:48%;float:left; background-image:url('./img/wrongBook.png') ;background-repeat: no-repeat;  background-size:30%;background-position-x: right; background-position-y: 64rpx; ">
+      <view  class='round-angle' bindtap="toWrongCollection" style="height:100%;width:48%;float:left; background-image:url('{{url}}/img/wrongBook.png') ;background-repeat: no-repeat;  background-size:30%;background-position-x: right; background-position-y: 64rpx; ">
         <view style="margin: 20rpx;">
           <view class="bigwrd">错词本</view>
           <view class="smallwrd">错词巩固，针对提升</view>        
         </view>
       </view>
-      <view  class='round-angle' bindtap="toCollection" style="height:100%;width:48%;float:right; background-image:url('./img/collection.png') ;background-repeat: no-repeat;  background-size:30%;background-position-x: right; background-position-y: 64rpx;">
+      <view  class='round-angle' bindtap="toCollection" style="height:100%;width:48%;float:right; background-image:url('{{url}}/img/collection.png') ;background-repeat: no-repeat;  background-size:30%;background-position-x: right; background-position-y: 64rpx;">
         <view style="margin: 20rpx;">
           <view class="bigwrd">收藏夹</view>
           <view class="smallwrd">重点难点，着重强化</view>        
         </view>
       </view>
     </view>
-    <view style="flex:2 ;background-image:url('./img/bottom_logo.png'); background-repeat: no-repeat;background-size:contain;background-position-y:100%;">
+    <view style="flex:2 ;background-image:url('{{url}}/img/bottom_logo.png'); background-repeat: no-repeat;background-size:contain;background-position-y:100%;">
     </view>
   </view>  
 </view>

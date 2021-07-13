@@ -27,14 +27,14 @@ Page({
       {
         level:"大学",
         category:['四级','六级','考研']
-      },                 
+      },              
     ],
     selectComfirm:false,
     books:[],
     currentBookList:[],
     choosed:0,//当前选中的导航栏
-    navBarSrc:"pic/navBar.png",
     nextBarChoosed:0,//当前选中的副导航栏
+    url:app.globalData.baseUrl
   },
   onLoad: function () {
     wx.setNavigationBarTitle({ title:'添加词书'})

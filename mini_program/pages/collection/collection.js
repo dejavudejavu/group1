@@ -11,6 +11,7 @@ Page({
       method: 'pause'
     },  
     music:"", 
+    url:app.globalData.baseUrl
   },
   playAudio: function () {
     this.setData({
@@ -85,7 +86,7 @@ Page({
       },
       success (res) {
         var words=that.data.words
-        console.log("words",words)
+        console.log("words",words,index)
         words[index].is_in_collection=!words[index].is_in_collection
         that.setData({
           words:words

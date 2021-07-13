@@ -41,7 +41,6 @@
         </view>
         <view style="color:rgba(255,255,255,0.4);font-size:16rpx;width:120rpx;">长按并识别二维码和我一起背单词吧</view>
       </view>
-    
     </view>
   </view>
   
@@ -52,16 +51,16 @@
 <!--底部操作部分-->
 <view style="display:flex;\margin-top:32rpx;">
   <view style="display:flex;flex-direction:column;align-items:center;margin-left:180rpx;">
-    <button data-name="shareBtn" open-type="share">
-      <view open-type="share"><image src="pic/share.png" style="height:80rpx;width:90rpx"/></view>
-      <view class="sentence">分享给好友</view>      
+    <button data-name="shareBtn" open-type="share" style="height:80rpx;width:90rpx">
     </button>    
+    <view open-type="share"><image src="pic/share.png" style="height:80rpx;width:90rpx"/></view>
+    <view class="sentence">分享给好友</view>      
   </view>
   <view style="display:flex;flex-direction:column;align-items:center;margin-left:130rpx;">
-    <view bindtap=""><image src="pic/save.png" style="height:80rpx;width:90rpx"/></view>
+    <view bindtap="saveImg"><image src="pic/save.png" style="height:80rpx;width:90rpx"/></view>
     <view class="sentence">仅保存海报</view>
   </view>
 </view>
 
-
-
+<view class='btn ' bindtap=''>保存</view>
+<button class='openSetting' open-type="openSetting" bindopensetting='handleSetting' hidden='{{openSettingBtnHidden}}'>授权</button>

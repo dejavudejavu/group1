@@ -4,7 +4,7 @@
 <view class="nav" style="display:flex;">
   <view style="display:flex;flex-direction:column;" wx:for="{{navList}}">
     <view class="{{index==choosed?'choosed':'unchoosed'}} choose" bindtap="chooseLevel" data-level="{{index}}">{{item.level}}</view>
-    <image hidden="{{index!=choosed}}" src="{{navBarSrc}}" style="width:41rpx;height:9rpx;align-self:center;"></image>
+    <image hidden="{{index!=choosed}}" src="{{url}}/pic/navBar.png" style="width:41rpx;height:9rpx;align-self:center;"></image>
   </view>
 </view>
 <!--副导航栏-->
@@ -22,7 +22,7 @@
         <view class="bookPar1 bookPar">{{item.book_name}}</view>
         <view class="bookPar2 bookPar">{{item.word}}词汇</view>
         <!-- <view style="display:flex;"class="bookPar2 bookPar">
-          <image src="pic/head.png" style="width:68rpx;height:30rpx;"></image>
+          <image src="{{url}}/pic/heads.png" style="width:68rpx;height:30rpx;"></image>
           <view >{{item.people}}人正在背</view>
         </view> -->
       </view>

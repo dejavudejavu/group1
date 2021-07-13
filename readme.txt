@@ -1,3 +1,11 @@
+项目启动流程：
+1.安装依赖：pip install -r requirements.txt
+2.启动后台：到此路径下group1\flask_app\flask_pj,执行python manage.py 8888
+3.修改前端ip：在app.js中ip改为自己的，端口不变。启动成功
+
+打开后台
+
+|   第一组记单词小程序
 |   |-- flask_app 	后台工程
 |   |   `-- flask_pj
 |   |       |-- __init__.py

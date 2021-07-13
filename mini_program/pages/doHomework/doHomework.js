@@ -14,7 +14,7 @@ Page({
     right_word:"",
     words:[],
     colors:["white","#43caac","#ff4d5e"],
-    imgs:["./pic/right.png","./pic/error.png"],
+    imgs:["/pic/right.png","/pic/error.png"],
     src:"",
     right_or_wrong:"",
     explanation:false,
@@ -28,7 +28,8 @@ Page({
     },  
     audioAction_3: {
       method: 'pause'
-    }
+    },
+    url:app.globalData.baseUrl
   },
   onLoad(options){
     wx.setNavigationBarTitle({ title:'单词100'})
@@ -57,7 +58,7 @@ Page({
         console.log("words",data)
         for(i=0;i<data.length;i++){
           data[i].pronunciation=app.globalData.baseUrl+data[i].pronunciation
-          data[i].examples[0]=data[i].examples[0].split(". ")
+          // data[i].examples[0]=data[i].examples[0].split(". ")
         }
         that.setData({
           words:data
@@ -179,7 +180,7 @@ Page({
     }
     this.setData({
       choices:choices,
-      right_or_wrong:"./music/error.mp3",      
+      right_or_wrong:this.data.url+"/music/error.mp3",      
     })  
     this.playAudio_3()
     var that=this
@@ -193,7 +194,7 @@ Page({
   else{
     this.setData({
       choices:choices,
-      right_or_wrong:"./music/correct.mp3",      
+      right_or_wrong:this.data.url+"/music/correct.mp3",      
     })  
     this.playAudio_3()       
     if(learned<this.data.total){

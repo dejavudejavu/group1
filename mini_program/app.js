@@ -10,5 +10,6 @@ App({
   globalData: {
     userInfo: null,
     baseUrl:"http://192.168.31.68:8888"
+    // baseUrl:"http://10.127.138.151:8888"
   }, 
 })

@@ -1,4 +1,5 @@
 // pages/wordExplanation/wordExplanation.js
+var app = getApp();
 Page({
 
   /**
@@ -10,10 +11,9 @@ Page({
     type:"n",//词性
     meaning:"下午",//单词释义
     sentence:[{eng:"He had stay……",chi:"他整个……"},{eng:"He  is arriv……",chi:"他下午……"}],
-    wordState:0,//0-已加入措辞本，1-未加入措辞本
+    wordState:0,//0-已加入错词本，1-未加入错词本
     displayState:"已加入错题本",//两种显示状态：0.已加入错题本，1-加入错题本
-    
-
+    url:app.globalData.baseUrl
   },
   nextWord(e){
     wx:wx.navigateTo({
@@ -54,6 +54,5 @@ Page({
       }
     })    
   }
-  },
-  
+  },  
 })

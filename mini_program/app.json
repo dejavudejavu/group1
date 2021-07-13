@@ -20,6 +20,7 @@
     "van-divider": "@vant/weapp/divider/index",
     "van-switch": "@vant/weapp/switch/index",
     "van-toast": "@vant/weapp/toast/index",
-    "van-dialog": "@vant/weapp/dialog/index"
+    "van-dialog": "@vant/weapp/dialog/index",
+    "van-popup": "@vant/weapp/popup/index"
   }
 }

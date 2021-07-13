@@ -17,6 +17,7 @@ Page({
     total:"",
     learned:"",
     // start_show:false
+    url:app.globalData.baseUrl
   },
   toWrongCollection(){
     wx.navigateTo({
@@ -59,6 +60,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      url:app.globalData.baseUrl
+    })
+    console.log("onload",options)
     var that=this
     wx.login({
       success: res => {
@@ -149,8 +154,10 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function (option) {
-
+  onShow: function () {
+    if(this.data.avatar!==''){
+      this.getData()
+    }
   },
 
   /**

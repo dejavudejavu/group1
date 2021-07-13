@@ -9,7 +9,7 @@
 <!--title-->
 <view style="display:flex;margin-top:40rpx;margin-left:32rpx;height:30rpx">
   <view style="font-size:37rpx;">正在学习</view>
-  <image src="{{picSrc}}" style="width:26rpx;height:30rpx;margin-left:13rpx;margin-top:10rpx" />
+  <image src="{{url}}/pic/light.png" style="width:26rpx;height:30rpx;margin-left:13rpx;margin-top:10rpx" />
 </view>
 <!--book-->
 <van-swipe-cell right-width="{{80}}">
